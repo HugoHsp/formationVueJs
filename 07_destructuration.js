@@ -12,7 +12,7 @@
  *  - interdiction d'utiliser slice ou splice
  */
 
-const extractFirstTwo = ([first, second, ...rest]) => {
+const extractFirstTwo = ([first, second]) => {
     return [first, second];
 }
 
@@ -25,8 +25,8 @@ console.log(extractFirstTwo([1,2,3]));
  * exemple: [1, 2, 3] => [2, 3]
  */
 
-const extractRest = ([first, second, ...rest]) => {
-    return [second, ...rest];
+const extractRest = ([first, ...rest]) => {
+    return rest;
 }
 
 console.log(extractRest([1,2,3]));
@@ -60,8 +60,8 @@ console.log(extractName({name: "toto", age: 42}));
  * 
  */
 
-const removePassword = ({name,  ...obj}) => {
-    return {name};
+const removePassword = ({password,  ...rest}) => {
+    return rest;
 };
 
 console.log(removePassword({name: "toto", password: "1234"}));

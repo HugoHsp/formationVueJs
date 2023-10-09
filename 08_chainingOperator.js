@@ -17,7 +17,7 @@
  */
 
 const getGroupName = (obj) => {
-    return obj.group?.name !== null ? obj.group?.name : undefined;
+    return obj?.group?.name;
 }
 
 
