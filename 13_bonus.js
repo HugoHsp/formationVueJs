@@ -62,7 +62,10 @@ exemple:
 */
 
 const sortObjectByValue = (obj) => {
-  // const sorted = obj.map((x))
+  const tableauDePaires = Object.entries(obj);
+  const tableauTrie = tableauDePaires.sort((a, b) => a[1] - b[1]);
+  const objetTrie = Object.fromEntries(tableauTrie);
+  return objetTrie;
 };
 
 const fruits = {
@@ -71,6 +74,6 @@ const fruits = {
   "cerises": 8
 };
 
-sortObjectByValue(fruits)
+console.log(sortObjectByValue(fruits));
 
 module.exports = {countWords, sortObjectByValue};
