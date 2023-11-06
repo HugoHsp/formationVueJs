@@ -1,4 +1,4 @@
-//const {sleep} = require("../exercices/10_promise");
+const {sleep} = require("./10_promise");
 
 /**
  * Créez une fonction synchrone qui attend 2 seconde puis execute le callback passé en paramètre
@@ -12,7 +12,15 @@
  * 
  */
 const usingThen = (cb) => {
+    sleep().then(() => {
+        console.log("2 secondes passées");
+        cb();
+    });
 }
+
+usingThen(() => {
+    console.log('callback');
+});
 
 /**
  * Créez une fonction asynchrone qui attend 2 seconde puis execute le callback passé en paramètre
@@ -25,9 +33,15 @@ const usingThen = (cb) => {
  *   - ne pas utiliser .then
  */
 
-const usingAwait = (cb) => {
-
+const usingAwait = async (cb) => {
+    await sleep();
+    console.log("2 secondes, callback : ");
+    cb();
 }
+
+usingAwait(() => {
+    console.log('callback promise');
+})
 
 /**
  * Créez une fonction asynchrone qui effectue un appel api vers l'url passé en paramètre
@@ -42,11 +56,13 @@ const usingAwait = (cb) => {
  */
 
 //décommentez la ligne suivante une fois le package installé
-//const axios = require("axios");
+const axios = require("axios");
 
 const apiResponse = async (url) => {
-
+    const axiosGet = await axios.get(url);
+    console.log(axiosGet.data);
 }
 
+apiResponse("https://jsonplaceholder.typicode.com/todos/1");
 
 module.exports = {usingThen, usingAwait, apiResponse};
