@@ -25,6 +25,16 @@ ex: la pomme est rouge et la banane est jaune
  */
 
 const countWords = (sentence) => {
+  const mots = sentence.split(" ");
+  const occurence = mots.reduce((accumulator, currentValue) => {
+    if (accumulator[currentValue]) {
+      accumulator[currentValue]++;
+    } else {
+      accumulator[currentValue] = 1;
+    }
+    return accumulator;
+  }, {});
+  return occurence;
 };
 console.log(countWords("la pomme est rouge et la banane est jaune"));
 
@@ -52,6 +62,15 @@ exemple:
 */
 
 const sortObjectByValue = (obj) => {
+  // const sorted = obj.map((x))
 };
+
+const fruits = {
+  "bananes": 1,
+  "pommes": 3,
+  "cerises": 8
+};
+
+sortObjectByValue(fruits)
 
 module.exports = {countWords, sortObjectByValue};
